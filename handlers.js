@@ -7,12 +7,24 @@ import {
 import { log } from "./log.js";
 import { startRecording, stop } from "./service.js";
 
+const constrans = {
+    video: true,
+    audio: true,
+};
+
+export function onCameraSelect(e) {
+    if (e.target.value) {
+        constrans.video = {
+            deviceId: e.target.value
+        };
+    } else {
+        constrans.video = true;
+    }
+}
+
 export function onStart() {
   navigator.mediaDevices
-    .getUserMedia({
-      video: true,
-      audio: true,
-    })
+    .getUserMedia(constrans)
     .then((stream) => {
       preview.srcObject = stream;
       downloadButton.href = stream;

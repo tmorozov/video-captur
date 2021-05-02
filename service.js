@@ -1,5 +1,5 @@
-import { wait } from "./globals";
-import { log } from "./log";
+import { wait } from "./globals.js";
+import { log } from "./log.js";
 
 export function startRecording(stream, lengthInMS) {
   let recorder = new MediaRecorder(stream);

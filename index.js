@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { startButton, stopButton, videoSelect } from "./globals.js";
-import { onStart, onStop } from "./handlers.js";
+import { onStart, onStop, onCameraSelect } from "./handlers.js";
 
 startButton.addEventListener("click", onStart, false);
 stopButton.addEventListener("click", onStop, false);
@@ -18,3 +18,10 @@ navigator.mediaDevices
     });
   })
   .catch(log);
+
+  let option = document.createElement("option");
+  option.value = null;
+  option.text = 'none'
+  videoSelect.appendChild(option);
+  
+  videoSelect.addEventListener("change", onCameraSelect, true);
